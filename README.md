@@ -1,4 +1,4 @@
-# 📝 Simple Express Blog App
+# 📝 Simple Express CRUD App
 
 This is a basic blog-style CRUD application built with **Express.js**, **EJS**, and **UUID**. It allows users to create, read, update, and delete simple text posts.
 
