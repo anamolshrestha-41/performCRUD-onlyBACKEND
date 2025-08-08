@@ -3,17 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit your page!!</title>
+    <title>Edit Post - CRUD App</title>
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <h2>Edit your page!</h2>
-    <h3><%=post.id%></h3> <br>
-    <h4><%=post.title%></h4> <br>
-    <form action="/posts/<%=post.id%>?_method=PUT" method="post">
-    <textarea name="content" id="content"><%=post.content%></textarea> <br>
-    <button>Submit Change</button>
-    </form>
-    
+    <div class="container">
+        <a href="/posts" class="back-link">← Back to Posts</a>
+        
+        <div class="form-container">
+            <h2>Edit Post</h2>
+            <h4>Editing: <%= post.title %></h4>
+            
+            <form action="/posts/<%= post.id %>?_method=PUT" method="post">
+                <div class="form-group">
+                    <label for="content" class="form-label">Content</label>
+                    <textarea name="content" id="content" class="form-textarea" required><%= post.content %></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Update Post</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

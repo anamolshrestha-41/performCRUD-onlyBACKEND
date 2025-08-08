@@ -3,22 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All posts</title>
+    <title>Posts - CRUD App</title>
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <h1>Posts</h1>
-    <%for(let post of posts){%>
-        <div>
-            <!-- <h2>ID:<%=post.id%></h2> -->
-            <h3> TITLE:<%=post.title%></h3>
-            <p>Content: <%=post.content%></p>
-             <a href="http://localhost:8080/posts/<%=post.id%>/edit">Edit post</a>
-             <form action="/posts/<%=post.id%>?_method=DELETE" method="post">
-                <button>DELETE</button>
-             </form>
-        </div>
-    <%}%>
-    <a href="http://localhost:8080/posts/new">Create post</a>
+    <div class="container">
+        <h1>My Posts</h1>
+        
+        <% if (posts.length === 0) { %>
+            <div class="empty-state">
+                <h3>No posts yet</h3>
+                <p>Create your first post to get started!</p>
+            </div>
+        <% } else { %>
+            <% for(let post of posts) { %>
+                <article class="post-card">
+                    <h3><%= post.title %></h3>
+                    <p class="post-content"><%= post.content %></p>
+                    <div class="post-actions">
+                        <a href="/posts/<%= post.id %>/edit" class="btn btn-secondary">Edit</a>
+                        <form action="/posts/<%= post.id %>?_method=DELETE" method="post" style="display: inline;">
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this post?')">Delete</button>
+                        </form>
+                    </div>
+                </article>
+            <% } %>
+        <% } %>
+        
+        <a href="/posts/new" class="create-btn" title="Create new post">+</a>
+    </div>
 </body>
 </html>
