@@ -69,8 +69,9 @@ app.delete("/posts/:id", (req, res)=>{
     posts=posts.filter((p)=>id!==p.id);
     res.redirect("/posts");
 })
+ 
+module.exports = app;
 
-
-app.listen(port, ()=>{
-    console.log(`Server started to run in port no: ${ port }`);
-}) 
+// app.listen(port, ()=>{
+//     console.log(`Server started to run in port no: ${ port }`);
+// }) 
